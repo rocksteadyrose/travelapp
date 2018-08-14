@@ -7,9 +7,6 @@ const travelSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User"
   },
-  _id: {
-    type: Schema.Types.ObjectId,
-  },
   startDate: {
     type: Date,
     required: true

@@ -146,12 +146,12 @@ class App extends Component {
                   </li>
                   <li className="nav-item">
                     {/* <a className="nav-link js-scroll-trigger" href="#services" onClick={this.handleSmoothScrollServices}>Services</a> */}
-                    <Link className="nav-link js-scroll-trigger" to={"/travel/" + this.state.userId}>Travel</Link>
+                    <Link className="nav-link js-scroll-trigger" to={"/travels"}>Travel</Link>
                   </li>
 
                   <li className="nav-item">
                     {/* <a className="nav-link js-scroll-trigger" href="#contact" onClick={this.handleSmoothScrollContact}>Contact</a> */}
-                    <Link className="nav-link js-scroll-trigger" to={"/calendar/" + this.state.userId}>Calendar</Link>
+                    <Link className="nav-link js-scroll-trigger" to={"/calendar/"}>Calendar</Link>
                   </li>
                   <li className="nav-item">
                       <a className="nav-link" href="/logout"><i className="fas fa-sign-out-alt"></i> Log Out</a>
@@ -194,13 +194,13 @@ class App extends Component {
             <LoggedOutRoute path="/login" component={LoginPage} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
             <LoggedOutRoute path="/signup" component={SignUpPage}/>
             <Route path="/logout" component={LogoutFunction}/>
-            <PrivateRoute path="/travel/:userId" component={InputTravelPage}/>
+            <PrivateRoute path="/travels" component={InputTravelPage}/>
      
 
             {/* <Route exact path="/" component={HomePage} />*/}
             {/* <Route exact path="/travel" component={InputTravelPage} /> */}
             <Route exact path="/agenda/:travelId" component={TravelAgenda} />
-            <Route exact path="/calendar/:userId" component={Calendar} /> 
+            <Route exact path="/calendar" component={Calendar} /> 
             
            </div>
       

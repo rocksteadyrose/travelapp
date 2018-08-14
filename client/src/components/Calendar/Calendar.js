@@ -3,14 +3,11 @@ import React from 'react';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import events from './eventslist'
-
 
 BigCalendar.momentLocalizer(moment);
 
 const Selectable = props => {
   const formattedTrips = props.trips.map((trip) => {
-    // console.log(trip)
     return {
       ...trip,
       start: new Date(moment(trip.startDate)),
@@ -31,7 +28,7 @@ const Selectable = props => {
     scrollToTime={new Date(1970, 1, 1, 6)}
     onSelectEvent={event => {
       props.history.push("/agenda/" + event._id) 
-      console.log(event)
+      // console.log(this.props.match.params.travelId)
     }}
     onSelectSlot={
       slotInfo =>

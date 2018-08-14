@@ -1,9 +1,9 @@
 const express = require('express');
-
 const router = new express.Router();
-
-const db = require("../models/User");
-const travelController = require("../controllers/travelController");
+const models = require("../models/");
+const axios = require("axios");
+const WEATHERAPI = "a385e638a6477656f3b41b4c0cdf8219";
+const TUMBLRAPI = "fuiKNFp9vQFvjLNvx4sUwti4Yb5yGutBN4Xh10LXZhhRKjWlV4";
 
 router.get('/travel', (req, res) => {
 	res.status(200).json({
@@ -12,104 +12,119 @@ router.get('/travel', (req, res) => {
 	});
 });
 
-// router.get('/travel/:userId', (req, res) => {
-// 	db.findById(req.user._id)
-// 	// .populate("travels")
-// 	.then((userInfo) => {
-// 		// console.log(userInfo)
-// 		// console.log(req.user._id)
-// 		console.log(userInfo)
-// 		res.json({
-// 			user: userInfo
-// 		})
-// 		// console.log(userInfo)
 
-// 	})
-// 	.catch(() => res.status(404).json({
+const fetchWeatherData = travel => {
+	return axios(`http://api.openweathermap.org/data/2.5/weather?q=${travel.city},${travel.country}&appid=${WEATHERAPI}&units=imperial`)
+		.then(weatherData => {
+			return {
+				weather: weatherData.data,
+				travel: travel
+			}
+		})
+}
 
-// 	}))
-// });
+const fetchTumblrData = (travelAndWeather) => {
+	const searchTerms = [];
+	searchTerms.push("fashion");
+	searchTerms.push(travelAndWeather.travel.city);
+
+	console.log(searchTerms.toString().split(/[ ,]+/).join("+"))
+
+	return axios("https://api.tumblr.com/v2/tagged?tag=" + searchTerms.toString().split(/[ ,]+/).join("+") + "+&/posts?&api_key=" + TUMBLRAPI)
+		.then(tumblrData => {
+			return {
+				tumblr: tumblrData.data.response,
+				weather: travelAndWeather.weather,
+				travel: travelAndWeather.travel
+			}
+		})
+};
 
 router.get('/users/:userId', (req, res) => {
 
-	db.findById({_id: req.params.userId})
-	.then((userInfo) => {
-		// console.log(userInfo)
-		res.json({
-			user: userInfo
+	models.User.findById({ _id: req.params.userId })
+		.then((userInfo) => {
+			// console.log(userInfo)
+			res.json({
+				user: userInfo
+			})
 		})
-	})
-	.catch(() => res.status(404).json({
+		.catch(() => res.status(404).json({
 
-	}))
+		}))
 });
 
 router.get("/users", (req, res) => {
-	db.find({})
-	.then(function(userResponse){
-		res.status(200).json(userResponse)
-	})
-	// console.log(userResponse)
-
+	models.User.find({})
+		.then(function (userResponse) {
+			res.status(200).json(userResponse)
+		})
 })
 
-router.post("/travel/form", (req, res) => {
-	db.findById(req.user._id)
-	.then((userInfo) => {
-		console.log(req.body)
-		
-		userInfo.id = req.body.id;
-		userInfo.startDate = req.body.startDate;
-		userInfo.endDate = req.body.endDate;
-		userInfo.city = req.body.city;
-		userInfo.country = req.body.country;
-		userInfo.hotel = req.body.hotel;
-		userInfo.flightNumber = req.body.flightNumber;
-		// userInfo._id = req.body._id;
-		// userInfo._id = new ObjectID();
-		userInfo.trips = userInfo.trips.concat([req.body])
+router.post("/travels", (req, res) => {
+	models.User
+		.findById(req.user._id)
+		.then(foundUser => {
+			return models.Travel
+				.create({
+					...req.body,
+					_userId: foundUser._id,
+				})
+		})
+		.then(travel => res.json(travel))
+		.catch(err => res.status(422).json(err));
+}),
+	router.get('/calendar', (req, res) => {
+		models.Travel.find({
+			_userId: req.user._id,
+		})
+			.then(travels => {
+				res.json(travels);
+			})
+			.catch(err => res.status(422).json(err));
+	});
 
-		// userInfo = req.body;
-		// userInfo.trips.push({_id: new ObjectID()})
-		userInfo.save()
-		res.json(req.body)
-		// console.log(userInfo.trips)
-		// res.json(userInfo.startDate, userInfo.endDate, userInfo.city, userInfo.country, userInfo.hotel, userInfo.flightNumber)
-		
+router.get('/agenda/:travelId', (req, res) => {
+	models.Travel.findOne({
+		_id: req.params.travelId,
 	})
-	.catch(() => res.status(404).json({
-	}))
-
-})
-
-
-router.get('/calendar/:userId/', (req, res) => {
-	db.findById(req.user._id)
-	.then((userInfo) => {
-		console.log(req.user.trips)
-
-		userInfo.trips = req.body.trips;
-		// userInfo.save()
-		res.json(
-			req.user.trips		
-		)
-
-	})
-	.catch(() => res.status(404).json({
-
-	}))
+		.then(fetchWeatherData)
+		.then(fetchTumblrData)
+		.then(({ travel, weather, tumblr }) => res.json({
+			travel, weather, tumblr
+		}))
+		.catch(err => res.status(422).json(err));
 });
+
+router.put("/agenda/:travelId", (req, res) => {
+	models.Travel
+		.findOneAndUpdate({ _id: req.params.travelId }, req.body, { new: true })
+		.then(tumblr => {
+			console.log(tumblr);
+			res.json(tumblr);
+		})
+		.catch(err => res.status(422).json(err));
+}),
+
+	router.delete("/agenda/:travelId", (req, res) => {
+		models.Travel
+			.findById({ _id: req.params.travelId })
+			.then(travel => travel.remove())
+			.then(travel => res.json(travel))
+			.catch(err => res.status(422).json(err));
+	})
+
 
 
 //Get all travel from user 
-router.get("/calendar/:userId", travelController.findAllTravel);
+router.get("/calendar");
 //When one travel log is clicked
-router.get("/agenda/:travelId", travelController.findOneTravel);
+router.get("/agenda/:travelId");
 //When submit new travel is clicked
-router.post("/travel/form", travelController.createTravel);
+router.post("/travels");
 //Edit travel
-router.put("/travel/:travelId", travelController.editTravel);
+// router.put("/travel/:travelId");
 //Delete travel
-router.delete("/travel/:travelId", travelController.deleteTravel);
+// router.delete("/travel/:travelId");
 
 module.exports = router;

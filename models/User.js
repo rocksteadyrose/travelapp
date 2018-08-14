@@ -23,11 +23,6 @@ const UserSchema = Schema({
     type: Schema.Types.ObjectId,
     ref: "Travel"
   }],
-  trips: [{
-    type: Array,
-    required: false,
-    description: [],
-  }]
 });
 
 /**

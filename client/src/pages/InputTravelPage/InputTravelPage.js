@@ -54,13 +54,20 @@ class InputTravelPage extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        API.createTravel(
-            this.state
-        )
+        API.createTravel({
+            city: this.state.city,
+            state: this.state.state,
+            hotel: this.state.hotel,
+            startDate: this.state.startDate,
+            endDate: this.state.endDate,
+            country: this.state.country,
+            flightNumber: this.state.flightNumber,
+            _id: this.state._id,
+        })
             .then(res => {
                 console.log(res)
                 // this.setState({ _id: ObjectId() })
-                this.props.history.push(`/calendar/` + this.props.match.params.userId)
+                this.props.history.push(`/calendar`)
             })
             .catch(err => console.log(err));
     }

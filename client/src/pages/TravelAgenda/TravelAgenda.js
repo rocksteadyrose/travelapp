@@ -11,7 +11,7 @@ import { Input, FormBtn } from "../../components/TravelForm";
 
 class TravelAgenda extends Component {
     state = {
-        trip: {
+            trip: { 
             imageObjects: [],
             inputText: [],
             city: null,
@@ -20,8 +20,8 @@ class TravelAgenda extends Component {
             endDate: null,
             hotel: null,
             flightNumber: null,
-            packingList: [],
-        },
+            packingList: []
+            },
         weather: null,
         isLoading: true,
         tumblr: null
@@ -33,21 +33,24 @@ class TravelAgenda extends Component {
 
     loadUserTravel = () => {
         API.findOneTravel(this.props.match.params.travelId)
-            .then(res => this.setState({
+            .then(res => { 
+                console.log(res)
+                this.setState({
                 weather: res.data.weather,
                 tumblr: res.data.tumblr,
                 trip: res.data.travel,
                 packingList: res.data.travel.packingList,
                 imageObjects: res.data.travel.imageObjects,
-                inputText: res.data.travel.inputText
-            }))
+                inputText: res.data.travel.inputText 
+             } )} )
+
             .then(() => this.setState({ isLoading: false }))
             .catch(err => console.log(err));
     }
 
     deleteTrip = travelId => {
         API.deleteTravel(travelId)
-            .then(res => this.props.history.push('/travel')
+            .then(res => this.props.history.push('/')
             ).catch(err => console.log(err));
     };
 
@@ -73,9 +76,7 @@ class TravelAgenda extends Component {
 
         const notes = [];
         const imageObjects = this.state.trip.imageObjects.concat([{ id, tumblrImage, notes }]);
-
         console.log(imageObjects);
-
         this.setState({
             trip: {
                 ...this.state.trip,
@@ -160,6 +161,7 @@ class TravelAgenda extends Component {
         );
     }
 
+
     render() {
 
         return (
@@ -174,7 +176,7 @@ class TravelAgenda extends Component {
                         {/* <div className="buttons center"> */}
                         <button className="deleteTripButton btn" onClick={() => this.deleteTrip(this.state.trip._id)} >DELETE TRIP</button>
 
-                        <button className="addTripButton btn"><Link to={"/travel/"}>ADD ANOTHER TRIP</Link></button>
+                        <button className="addTripButton btn"><Link to={"/travels/"}>ADD ANOTHER TRIP</Link></button>
                         {/* </div> */}
 
                         <div className='ui grid'>

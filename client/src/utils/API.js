@@ -3,16 +3,15 @@ import Auth from './Auth';
 
 export default {
 
-    //TRAVEL
-    findAllTravel: (userId) => {
-        return axios.get(`/api/calendar/${userId}`, {
+    findAllTravel: () => {
+        return axios.get(`/api/calendar/`, {
             headers: {
                 'Authorization': `Bearer ${Auth.getToken()}`,
             },
         });
     },
     createTravel: (travelData) => {
-        return axios.post("/api/travel/form", travelData, {
+        return axios.post("/api/travels", travelData, {
             headers: {
                 'Authorization': `Bearer ${Auth.getToken()}`,
             },
@@ -28,11 +27,21 @@ export default {
     },
 
     editTravel: (travelId, travelData) => {
-        return axios.put(`/api/travel/${travelId}`, travelData)
+        return axios.put(`/api/agenda/${travelId}`, travelData, 
+         {
+        headers: {
+            'Authorization': `Bearer ${Auth.getToken()}`,
+        },
+    });
     },
 
+
     deleteTravel: (travelId) => {
-        return axios.delete(`/api/travel/${travelId}`)
-    }
+        return axios.delete(`/api/agenda/${travelId}`, {
+            headers: {
+                'Authorization': `Bearer ${Auth.getToken()}`,
+            },
+        });
+    },
 
 }
