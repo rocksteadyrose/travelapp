@@ -1,0 +1,8 @@
+.fave-button {
+  float: right;
+  background-color:coral;
+}
+
+.fave-button:hover {
+  background-color: rgb(0, 255, 234);
+}

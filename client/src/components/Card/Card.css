@@ -1,0 +1,26 @@
+.card {
+  background-size: cover;
+  background-position: center;
+  background-clip: content-box;
+  border: 6px solid white;
+  /* height: 300px;
+  width: 300px; */
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  position: relative;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.card .fa-cog {
+  font-size: 180px;
+  position: absolute;
+  left: 13%;
+  top: 20%;
+} 
+
+/* this styles the cog box without affecting the cards in about page */
+.search-style {
+  height: 300px;
+  width: 300px;
+}

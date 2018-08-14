@@ -1,0 +1,23 @@
+.travelDeets {
+    margin-top: -350px;
+}
+
+formButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;}
+
+.deleteTripButton {
+    color: coral;
+    background-color: rgb(66, 18, 156);
+}
+
+.deleteTripButton:hover, addTripButton:hover {
+    color: rgb(255, 203, 231)!important;
+}
+
+.addTripButton {
+    background-color: rgb(66, 18, 156);
+    margin-left: 5px;
+}
+

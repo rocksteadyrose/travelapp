@@ -1,0 +1,46 @@
+
+.form-control {
+    color: #f3c5e0!important;
+}
+
+input.form-control {
+    color: black;
+    background-color: lightblue;
+}
+form {
+    background-color: rgb(243, 227, 242);
+}
+
+#section {
+    background-image: url("/images/comfy-travel-dresses.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    
+    /*background-color: red;*/
+       
+    }
+
+#sectiontwo {
+    background-color: white;
+}
+
+#sectionthree {
+    background-image: url("/images/offthepath.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.main-section {
+    background:  #ebcedc;
+    padding: 30px;
+    margin: 150px 0 0 20%;
+    width: 100%;
+    max-width: 650px;
+    border: 1px solid black;
+    border-radius: 10px;
+    
+}

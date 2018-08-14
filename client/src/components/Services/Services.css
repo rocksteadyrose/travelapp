@@ -1,0 +1,9 @@
+.bg-primary {
+    background-color: coral !important;
+  }
+  
+.text-faded {
+    font-size: 15px;
+    color: black;
+   
+}

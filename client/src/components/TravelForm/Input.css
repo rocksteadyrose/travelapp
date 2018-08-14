@@ -1,0 +1,39 @@
+.form-control:valid {
+    background-color:white;
+    color: black;
+}
+*::-webkit-input-placeholder {
+    color: #dc6f68!important;
+}
+*:-moz-placeholder {
+    /* FF 4-18 */
+    color: dc6f68!important;
+}
+*::-moz-placeholder {
+    /* FF 19+ */
+    color: dc6f68!important;
+}
+*:-ms-input-placeholder {
+    /* IE 10+ */
+    color: dc6f68!important;
+}
+
+.form-control {
+    color: #af605b!important;
+}
+
+input.form-control {
+    color: black;
+    background-color: lightblue;
+}
+
+
+.main-section {
+    padding: 30px;
+    margin: 150px 0 0 20%;
+    width: 100%;
+    max-width: 650px;
+    border: 1px solid black;
+    border-radius: 10px;
+    
+}

@@ -1,0 +1,42 @@
+
+.jumbotron {
+    margin-top: 12%;
+    background-color: coral;
+    background-image: url("/images/travelwiththemet_marquee.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;    
+}
+
+h1 {
+    font-size: 40px;
+  /*  font-family: 'Montserrat', sans-serif; */
+    font-family: tokyoRegular;
+    src: url(../../Font/TTF/TokyoRegular-Regular.ttf);
+    background: coral;
+    color: white;
+    padding: 20px;
+    margin: 0px 0 0 25%;
+    width: 100%;
+    max-width: 600px;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+p {
+    font-size: 20px;
+    text-align: center;
+   /* font-family: 'Montserrat', sans-serif;*/
+    font-family: tokyoRegular;
+    src: url(../../Font/TTF/TokyoRegular-Regular.ttf);
+    /* font-weight: bold; */
+    background: coral;
+    color: white;
+    padding: 20px;
+    margin: 0px 0 0 25%;
+    width: 100%;
+    max-width: 600px;
+    border: 1px solid white;
+    border-radius: 10px;
+}

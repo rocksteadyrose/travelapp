@@ -1,0 +1,35 @@
+
+h1 {
+    font-size: 80px;
+    margin-top: -30px;
+}
+
+@media screen and (max-width: 701px) { 
+  
+    h1 {
+        font-size: 70px;
+    }
+}
+
+@media screen and (max-width: 628px) { 
+  
+    h1 {
+        font-size: 60px;
+    }
+}
+
+@media screen and (max-width: 520px) { 
+  
+    h1 {
+        font-size: 50px;
+    }
+}
+
+@media screen and (max-width: 400px) { 
+  
+    h1 {
+        font-size: 50px;
+        margin-top: -50px;
+    }
+}
+
