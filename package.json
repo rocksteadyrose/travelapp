@@ -1,0 +1,9 @@
+{
+  "name": "travelapp",
+  "version": "1.0.0",
+  "description": "Travel app for final project",
+  "main": "index.js",
+  "repository": "git@github.com:rocksteadyrose/travelapp.git",
+  "author": "Leslie, Mayra, Andrea, Laura",
+  "license": "MIT"
+}
