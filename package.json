@@ -1,9 +1,46 @@
 {
-  "name": "travelapp",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.3",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "if-env": "^1.0.4",
+    "jsonwebtoken": "^8.3.0",
+    "mongod": "^2.0.0",
+    "mongoose": "^5.2.5",
+    "morgan": "^1.9.0",
+    "passport": "^0.4.0",
+    "passport-local-mongoose": "^5.0.1",
+    "path": "^0.12.7",
+    "validator": "^10.5.0"
+  },
+  "name": "travel-app",
   "version": "1.0.0",
-  "description": "Travel app for final project",
-  "main": "index.js",
-  "repository": "git@github.com:rocksteadyrose/travelapp.git",
-  "author": "Leslie, Mayra, Andrea, Laura",
-  "license": "MIT"
+  "description": "Travel app for final project - input your travel plans and let the app be your personal style planner",
+  "main": "server.js",
+  "engines": {
+    "npm": "5.6.0",
+    "node": "10.8.0"
+  },
+  "scripts": {
+    "bundle": "webpack",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "seed": "node scripts/seedDB.js",
+    "install": "cd client && yarn install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
+  },
+  "repository": "git@github.com:laurawilsone/travel-app.git",
+  "author": "Andrea, Leslie, Laura, Mayra",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.18.3"
+  }
 }

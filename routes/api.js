@@ -14,13 +14,32 @@ router.get('/travel', (req, res) => {
 
 
 const fetchWeatherData = travel => {
-	return axios(`http://api.openweathermap.org/data/2.5/weather?q=${travel.city},${travel.country}&appid=${WEATHERAPI}&units=imperial`)
-		.then(weatherData => {
-			return {
-				weather: weatherData.data,
-				travel: travel
-			}
-		})
+	// our new promise
+	return new Promise((resolve, reject) => {
+		axios(`http://api.openweathermap.org/data/2.5/weather?q=${travel.city},${travel.country}&appid=${WEATHERAPI}&units=imperial`)
+			.then(weatherData => {
+				// resolve if okay
+				resolve({
+					weather: weatherData.data,
+					travel: travel
+				});
+				console.log(weatherData)
+
+			})
+			.catch(error => {
+				// STILL resolve
+				// this time with our fancy error we made up
+				console.log(error)
+				resolve({
+					weather: {
+						error: true,
+						code: error.response.status,
+						message: error.response.data,
+					},
+					travel: travel
+				});
+			});
+	});
 }
 
 const fetchTumblrData = (travelAndWeather) => {

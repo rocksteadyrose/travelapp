@@ -1,8 +1,10 @@
 
  
-# 💼 Style My Travel 👗 - Your personal travel stylist in a full-stack app
+# 💼 Style My Travel 👗 - Your personal travel stylist!
 
-View the completed app on Heroku: <a>LINK COMING SOON</a>.
+View the completed app on Heroku <a href="https://style-my-travel.herokuapp.com">here</a>.
+
+<img width="926" alt="screen shot 2018-08-17 at 9 07 40 am" src="https://user-images.githubusercontent.com/34491285/44270787-0dcb6a00-a1fe-11e8-9fed-226b33fb6fd2.png">
 
 Style My Travel a full-stack React app where jetsetters can get some seriously fab inspiration for their travels. Simply create a travel profile and input your upcoming travels to see all of your trips in one place on our travel calendar. Then, click your trip on the calendar for your personalized fashion itinerary, which includes fashion-spired outfits personally tailored to your specific trip, the weather in that city, and more. Don't forget to ❤ your fave outfits for inspiration, and create your packing list right there from the itinerary!
 
@@ -29,7 +31,16 @@ Style My Travel a full-stack React app where jetsetters can get some seriously f
 * HTML
 * CSS
 
-**Screenshots (Coming Soon):**
+**Screenshots:**
+<img width="950" alt="screen shot 2018-08-17 at 9 08 28 am" src="https://user-images.githubusercontent.com/34491285/44270811-20de3a00-a1fe-11e8-8fe3-7e99be20f643.png">
+<img width="946" alt="screen shot 2018-08-17 at 9 08 05 am" src="https://user-images.githubusercontent.com/34491285/44270789-115ef100-a1fe-11e8-90fd-8ce0ec7b8d29.png">
+<img width="962" alt="screen shot 2018-08-17 at 9 08 47 am" src="https://user-images.githubusercontent.com/34491285/44270798-191e9580-a1fe-11e8-8f20-94925cb4aa5a.png">
+<img width="930" alt="screen shot 2018-08-17 at 9 08 57 am" src="https://user-images.githubusercontent.com/34491285/44270838-2d629280-a1fe-11e8-9aec-4b57d300c9cc.png">
+<img width="1107" alt="screen shot 2018-08-17 at 9 12 04 am" src="https://user-images.githubusercontent.com/34491285/44270857-37849100-a1fe-11e8-8105-8f10b90f5f20.png">
+<img width="664" alt="screen shot 2018-08-17 at 9 13 54 am" src="https://user-images.githubusercontent.com/34491285/44270875-453a1680-a1fe-11e8-9160-46ae605e4588.png">
+<img width="680" alt="screen shot 2018-08-17 at 9 14 21 am" src="https://user-images.githubusercontent.com/34491285/44271046-b7126000-a1fe-11e8-834c-a483a2401c2c.png">
+![stylemytravel1](https://user-images.githubusercontent.com/34491285/44271099-d8734c00-a1fe-11e8-819f-6f4592ddaeef.jpg)
+![stylemytravel2](https://user-images.githubusercontent.com/34491285/44271105-dc9f6980-a1fe-11e8-974b-41f53b7c766d.jpg)
 
 **INSTRUCTIONS:**
 
@@ -71,6 +82,8 @@ Style My Travel a full-stack React app where jetsetters can get some seriously f
 ## Phase 2
 * We'll book the trip for you
 * Add additional experiences like airbnb, trip advisor, food options, etc
+* In-app purchases, clothing boxes, and partnership opps
+* Bookings and purchases all within the app so that the app serves as a one stop shop: no need to open a million tabs to book your travel, check the weather, and plan/purchase your outfits
 
 # Roles
 - Leslie: Lead Backend Developer– Full Stack Developer

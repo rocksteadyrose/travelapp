@@ -1,23 +1,83 @@
+
+@font-face {
+  
+    font-family: tokyoRegular;
+    src: url(../../Font/TTF/TokyoRegular-Regular.ttf);
+  
+  
+}
+  
+  
 .travelDeets {
     margin-top: -350px;
+    font-family: tokyoRegular;
+   
 }
-
 formButton {
     display: flex;
     justify-content: center;
     align-items: center;}
-
 .deleteTripButton {
-    color: coral;
-    background-color: rgb(66, 18, 156);
+    color: #907878;
+    background-color: #ffccbb;
 }
-
-.deleteTripButton:hover, addTripButton:hover {
-    color: rgb(255, 203, 231)!important;
+.deleteTripButton:hover {
+    color: white !important;
 }
-
+.addTripButton:hover {
+    color: white !important;
+}
 .addTripButton {
-    background-color: rgb(66, 18, 156);
+    background-color: #ffccbb;
+    color: #907878 !important;
     margin-left: 5px;
 }
-
+.FinalPageJumbotron {
+margin-top: 15%;
+}
+.ui.grid [class*="left floated"].column {
+    margin-right: 5%;
+    margin-left: 5%;
+    font-family: tokyoRegular;
+    
+}
+.detailsRow {
+   margin-left: 15% !important;
+  
+  
+}
+.picsRow {
+    margin-left: 10% !important;
+}
+/* .savedAreaPics {
+} */
+.savedArea {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.buttonAgenda {
+    margin-bottom: 5%;
+}
+.formButton {
+    background-color: white;
+    color: rgb(144, 120, 120);
+    
+}
+.formButton:hover {
+    color: white;
+ margin-left: 80%;
+}
+.packingTitle {
+    position: relative;
+    left: 460px;
+    margin-top: 10% !important;
+}
+.packingBox {
+    position: relative;
+    left: 6% !important;
+}
+.formButtonDiv {
+    position: relative;
+    left: -25%;
+    bottom: 20%;
+}

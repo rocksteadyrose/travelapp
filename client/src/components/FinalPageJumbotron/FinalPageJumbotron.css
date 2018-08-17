@@ -1,16 +1,29 @@
 
-h1 {
+@font-face {
+    font-family: tokyoRegular;
+    src: url(../../Font/TTF/TokyoRegular-Regular.ttf);
+   
+  
+  
+}
+  
+img.trips {
+    position: relative;
+    top: 25%;
+    opacity: 0.9;
+}
+h1.finalJumbo {
     font-size: 50px;
-    background-color: coral;
+    font-family: tokyoRegular;
+    background-color: rgb(255, 204, 187) !important;
     display:inline;
     max-width: 600px;
-    padding: 20px;
+    /* padding: 20px; */
     text-align: center;
     color: white;
-    border: 1px solid white;
+    /* border: 1px solid white; */
     border-radius: 10px;
 }
-
 .getStylin {
     font-size: 30px;
     max-width: 600px;
@@ -18,43 +31,36 @@ h1 {
     color: white;
     display:inline;
 }
-
 .travelDeets {
     margin-right: 80px;
 }
-
 .FinalPageJumbotron  {
     margin-bottom: 300px;
-    height: 120px;
 }
-
 .FinalPageJumbotron .FinalPageJumbotroncontainer {
-    background: url("/images/sunset.JPG") 100%;
+    background: url("/images/feet.jpeg") 50%;
+    
     padding-bottom: 50px;
-
+    height: 280px;
 }
-
 @media screen and (max-width: 701px) { 
   
     h1 {
         font-size: 70px;
     }
 }
-
 @media screen and (max-width: 628px) { 
   
     h1 {
         font-size: 60px;
     }
 }
-
 @media screen and (max-width: 520px) { 
   
     h1 {
         font-size: 50px;
     }
 }
-
 @media screen and (max-width: 400px) { 
   
     h1 {
@@ -62,4 +68,3 @@ h1 {
         margin-top: -50px;
     }
 }
-

@@ -1,7 +1,14 @@
 
+@font-face {
+  
+    font-family: tokyoRegular;
+    src: url(../../Font/TTF/TokyoRegular-Regular.ttf);
+  
+  
+}
 .jumbotron {
     margin-top: 12%;
-    background-color: coral;
+    background-color: #f87956;
     background-image: url("/images/travelwiththemet_marquee.jpg");
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -9,28 +16,28 @@
     background-size: cover;    
 }
 
-h1 {
+/* .maintagline {
     font-size: 40px;
-  /*  font-family: 'Montserrat', sans-serif; */
+   font-family: 'Montserrat', sans-serif;
     font-family: tokyoRegular;
     src: url(../../Font/TTF/TokyoRegular-Regular.ttf);
     background: coral;
     color: white;
     padding: 20px;
-    margin: 0px 0 0 25%;
+    margin: 0px 0 0 37%;
     width: 100%;
     max-width: 600px;
     border: 1px solid white;
     border-radius: 10px;
 }
 
-p {
+.secondtagline {
     font-size: 20px;
     text-align: center;
-   /* font-family: 'Montserrat', sans-serif;*/
+   font-family: 'Montserrat', sans-serif;
     font-family: tokyoRegular;
     src: url(../../Font/TTF/TokyoRegular-Regular.ttf);
-    /* font-weight: bold; */
+    font-weight: bold;
     background: coral;
     color: white;
     padding: 20px;
@@ -39,4 +46,11 @@ p {
     max-width: 600px;
     border: 1px solid white;
     border-radius: 10px;
-}
+} */
+
+img.imgCalendar {
+    position: relative;
+    top: 25%;
+    left: 18%;
+    opacity: 1;
+  }

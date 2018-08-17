@@ -2,45 +2,53 @@
 .form-control {
     color: #f3c5e0!important;
 }
-
 input.form-control {
     color: black;
-    background-color: lightblue;
+    /* background-color: lightblue; */
 }
 form {
     background-color: rgb(243, 227, 242);
 }
-
+form {
+    background-color: rgb(243, 227, 242);
+}
 #section {
+    margin-top: 12%;
     background-image: url("/images/comfy-travel-dresses.jpg");
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    padding-top: 5% !important;
     
     /*background-color: red;*/
        
     }
-
 #sectiontwo {
     background-color: white;
+    padding-top: 5% !important;
+    /* padding: 0px; */
 }
-
 #sectionthree {
     background-image: url("/images/offthepath.jpg");
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    padding-top: 5% !important;
 }
-
 .main-section {
-    background:  #ebcedc;
+    color: #907878;
+    font-weight: 700;
+    background:  #ffccbb;
     padding: 30px;
-    margin: 150px 0 0 20%;
+    margin-top: 100px;
+    margin-right: 0px;
+    margin-bottom: 10%;
+    margin-left: 20%;
     width: 100%;
     max-width: 650px;
-    border: 1px solid black;
+    border: none;
     border-radius: 10px;
     
 }

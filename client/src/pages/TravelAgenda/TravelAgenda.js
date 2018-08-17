@@ -7,6 +7,7 @@ import DeleteBtn from "../../components/DeleteBtn";
 import FinalPageJumbotron from "../../components/FinalPageJumbotron";
 import { Link } from "react-router-dom";
 import "./TravelAgenda.css";
+import fashionpics from "./fashionpics.json";
 import { Input, FormBtn } from "../../components/TravelForm";
 
 class TravelAgenda extends Component {
@@ -21,10 +22,11 @@ class TravelAgenda extends Component {
             hotel: null,
             flightNumber: null,
             packingList: []
-            },
+        },
         weather: null,
         isLoading: true,
-        tumblr: null
+        tumblr: null,
+        fashionpics
     };
 
     componentDidMount() {
@@ -32,20 +34,25 @@ class TravelAgenda extends Component {
     }
 
     loadUserTravel = () => {
+
         API.findOneTravel(this.props.match.params.travelId)
-            .then(res => { 
+            .then(res => {
                 console.log(res)
                 this.setState({
-                weather: res.data.weather,
-                tumblr: res.data.tumblr,
-                trip: res.data.travel,
-                packingList: res.data.travel.packingList,
-                imageObjects: res.data.travel.imageObjects,
-                inputText: res.data.travel.inputText 
-             } )} )
-
-            .then(() => this.setState({ isLoading: false }))
-            .catch(err => console.log(err));
+                    tumblr: res.data.tumblr,
+                    trip: res.data.travel,
+                    packingList: res.data.travel.packingList,
+                    imageObjects: res.data.travel.imageObjects,
+                    inputText: res.data.travel.inputText,
+                    weather: res.data.weather
+                })
+            })
+            .then(() =>
+                this.setState({
+                    isLoading: false
+                })
+            )
+            .catch(err => console.log(err))
     }
 
     deleteTrip = travelId => {
@@ -150,6 +157,17 @@ class TravelAgenda extends Component {
         })
     };
 
+    renderFashionPics(pic) {
+
+        return (
+            <ListItem key={pic.id}>
+                <img src={pic.image} alt="fashionImg" style={{ width: 150, }} />
+                <FavBtn onClick={() => this.saveImages(pic.id, pic.image)} />
+            </ListItem>
+        );
+    }
+
+
     renderTumblrItem(tum) {
         if (!tum.photos) return false;
 
@@ -161,23 +179,21 @@ class TravelAgenda extends Component {
         );
     }
 
-
     render() {
 
         return (
             <Container>
                 <FinalPageJumbotron className="FinalPageJumbotron" />
 
-
                 {!this.state.isLoading &&
 
                     <section className="travelDeets">
 
-                        {/* <div className="buttons center"> */}
+                        <div className="buttonAgenda">
                         <button className="deleteTripButton btn" onClick={() => this.deleteTrip(this.state.trip._id)} >DELETE TRIP</button>
 
-                        <button className="addTripButton btn"><Link to={"/travels/"}>ADD ANOTHER TRIP</Link></button>
-                        {/* </div> */}
+                        <button className="addTripButton btn"><Link className="addTripButton" to={"/travels/"}>ADD ANOTHER TRIP</Link></button>
+                        </div>
 
                         <div className='ui grid'>
                             <div className='detailsRow left floated six wide column'>
@@ -202,10 +218,16 @@ class TravelAgenda extends Component {
                                     </strong></h3> {this.state.trip.hotel}
                                     <br />
 
-                                    <h3><strong>Weather details</strong></h3>
-                                    <p>{this.state.weather.weather[0].description}</p>
-                                    <h3><strong>Temperature</strong></h3>
-                                    <p>{this.state.weather.main.temp}</p>
+                                    <div>
+                                        {this.state.weather.weather &&
+                                            <div>
+                                                <h3><strong>Weather details</strong></h3>
+                                                <p>{this.state.weather.weather[0].description}</p>
+                                                <h3><strong>Temperature</strong></h3>
+                                                <p>{this.state.weather.main.temp}</p>
+                                            </div>
+                                        }
+                                    </div>
                                 </div>
                             </div>
 
@@ -214,7 +236,7 @@ class TravelAgenda extends Component {
 
                         <div className='ui grid'>
                             <div className='picsRow left floated six wide column'>
-                                <h3>Fashion pics</h3>
+                            <div className="savedArea"><h3>Fashion pics</h3></div>
                                 {this.state.tumblr.length ? (
 
                                     <List>
@@ -222,12 +244,18 @@ class TravelAgenda extends Component {
                                     </List>
                                 )
                                     :
+
                                     (
-                                        <h3>No Results to Display</h3>
+                                        <div>
+
+                                            <h4>No photos for your city at this time - so we selected some for you!</h4>
+                                            {
+
+                                                this.state.fashionpics.map(pic => this.renderFashionPics(pic))}
+                                        </div>
                                     )}
 
                             </div>
-
                             <div className='savedAreaPics right floated six wide column'>
 
                                 <div className="savedArea"><h3>Saved fashion pics</h3></div>
@@ -247,7 +275,7 @@ class TravelAgenda extends Component {
                                     </List>
                                 ) :
                                     (
-                                        <h3>No Results to Display</h3>
+                                        <h3>No Saved Photos</h3>
 
                                     )}
 
@@ -255,27 +283,33 @@ class TravelAgenda extends Component {
 
                         </div>
 
+                        {/* Packing List */}
+
                         <div className="packingArea twelve wide column">
                             <div className="row">
                                 <div className='twelve wide column packingArea align-content-center'>
 
+                                    <h1 className="packingTitle"> What are you packing? </h1>
+
+                                    <div className="packingBox">
                                     <Input
+                                        // valuehtml="What are you packing?"
                                         name="inputText"
                                         value={this.state.inputText}
                                         placeholder="What should you pack?"
                                         onChange={this.handleInputChange} />
+                                    </div>
+                                    
+                                    <div className="formButtonDiv">
+                                        <FormBtn className="formButton" disabled={!(this.state.inputText)} onClick={(event) => this.handleFormSubmit(this.state.inputText, event)}>
+                                            Submit new item to packing list
+                                        </FormBtn>
+                                    </div>
+                                    
                                 </div>
                             </div>
-                            <div className="row">
 
-                                <div className='twelve wide column packingArea formBtn'>
-
-                                    <FormBtn className="formButton" disabled={!(this.state.inputText)} onClick={(event) => this.handleFormSubmit(this.state.inputText, event)}>
-                                        Submit new item to packing list
-                                                </FormBtn>
-                                </div>
-                            </div>
-                            <div className="row">
+                               <div className="row">
 
                                 <div className='twelve wide column packingArea'>
                                     {this.state.packingList.length ? (

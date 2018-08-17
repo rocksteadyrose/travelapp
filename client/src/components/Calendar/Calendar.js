@@ -28,7 +28,7 @@ const Selectable = props => {
     scrollToTime={new Date(1970, 1, 1, 6)}
     onSelectEvent={event => {
       props.history.push("/agenda/" + event._id) 
-      // console.log(this.props.match.params.travelId)
+      console.log(event)
     }}
     onSelectSlot={
       slotInfo =>

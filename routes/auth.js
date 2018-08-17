@@ -1,7 +1,6 @@
 const express = require('express');
 const validator = require('validator');
 const passport = require('passport');
-
 const router = new express.Router();
 
 /**
@@ -112,7 +111,8 @@ router.post('/signup', (req, res, next) => {
       token,
       message: 'You have successfully signed up! Now you should be able to log in.',
     });
-  })(req, res, next);
+  })
+  (req, res, next);
 });
 
 router.post('/login', (req, res, next) => {
@@ -147,8 +147,12 @@ router.post('/login', (req, res, next) => {
       message: 'You have successfully logged in!',
       token,
       user: userData
-    });
+      
+    }
+  );
+
   })(req, res, next);
+
 });
 
 module.exports = router;

@@ -22,7 +22,7 @@ const LoginForm = ({
     height: '350px',
     width: '630px',
   }} >
-    <form action="/travel/:userId" onSubmit={onSubmit} style= {{
+    <form action="/" onSubmit={onSubmit} style= {{
       position: 'relative',
       top: '20px',
       textAlign: 'center',

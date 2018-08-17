@@ -3,7 +3,7 @@ import "./FavBtn.css";
 
 const FavBtn = props => (
   <span className="fave-button btn" {...props}>
-    FAVORITE <span role="img" aria-labelledby="heart">❤️</span> 
+    Favorite <span role="img" aria-labelledby="heart">❤️</span> 
   </span>
 );
 

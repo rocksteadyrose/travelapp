@@ -3,6 +3,7 @@ import API from "../../utils/API";
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import Selectable from '../../components/Calendar'
 import EditorFormatUnderlined from 'material-ui/SvgIcon';
+import "./Calendar.css";
 
 
 class Calendar extends Component {
@@ -30,10 +31,14 @@ render() {
     <div className="app">
       <div className="jumbotron">
         <div className="container">
-          <h1>
+          <img className="imgCalendar" src="/images/tripsorange.png" alt="trips"/>   
+          {/* <h1 className="maintagline">
             Your Trips <i className="fa fa-calendar" />
           </h1>
-          <p>Get Stylin'!</p>
+          <br />
+          <br />
+          <br />
+          <p className="secondtagline">Get Stylin'!</p> */}
         </div>
       </div>
       <Selectable trips={this.state.trips}
